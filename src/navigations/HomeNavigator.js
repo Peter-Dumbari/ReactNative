@@ -10,7 +10,9 @@ import ContactDetails from "../screens/ContactDetail";
 import Contacts from "../screens/Contacts";
 import CreateContacts from "../screens/CreateContacts";
 import Settings from "../screens/Settings";
-import { Text } from "react-native";
+import { StyleSheet, View } from "react-native";
+import Colors from "../assets/theme/Colors";
+import { getHeaderTitle } from "@react-navigation/elements";
 
 const HomeNavigator = () => {
   const Home = createNativeStackNavigator();
@@ -18,7 +20,12 @@ const HomeNavigator = () => {
   return (
     <Home.Navigator
       initialRouteName={CONTACT_LISTS}
-      screenOptions={{ headerShown: true }}>
+      screenOptions={{
+        headerShown: true,
+        headerStyle: StyleSheet.create({
+          backgroundColor: Colors.primary,
+        }),
+      }}>
       <Home.Screen name={CONTACT_LISTS} component={Contacts}></Home.Screen>
       <Home.Screen
         name={CONTACT_DETAIL}

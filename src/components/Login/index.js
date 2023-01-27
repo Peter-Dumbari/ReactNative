@@ -15,6 +15,11 @@ const LoginComponent = ({ onSubmit, onChange, error }) => {
   const [show, setShow] = React.useState(true);
   const retry = true;
 
+  const {
+    authState: { loading },
+  } = useContext(GlobalContext);
+
+  console.log("loading", loading);
   return (
     <Container>
       <Image
@@ -54,7 +59,7 @@ const LoginComponent = ({ onSubmit, onChange, error }) => {
             error={error.passWord}></FormInput>
           <CustomButton
             title="Login Account"
-            loading={false}
+            loading={loading}
             disabled={false}
             primary
             onPress={onSubmit}></CustomButton>

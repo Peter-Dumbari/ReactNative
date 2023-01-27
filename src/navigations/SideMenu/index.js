@@ -11,6 +11,8 @@ import Container from "../../components/common/container";
 import StylesDrawer from "./StylesDrawer";
 import { SETTINGS } from "../../constants/Routename";
 import { logoutFn } from "../../context/actions/auth/logoutUser";
+import { SimpleLineIcons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 
 const SideMenu = ({ navigation, authDispatch }) => {
   const Logout = () => {
@@ -31,14 +33,14 @@ const SideMenu = ({ navigation, authDispatch }) => {
 
   const NavMenu = [
     {
-      icon: <Text>T</Text>,
+      icon: <SimpleLineIcons name="settings" size={20} color="#fff" />,
       name: "Setting",
       onPress: () => {
         navigation.navigate(SETTINGS);
       },
     },
     {
-      icon: <Text>T</Text>,
+      icon: <AntDesign name="logout" size={20} color="#fff" />,
       name: "Logout",
       onPress: Logout,
     },

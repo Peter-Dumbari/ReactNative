@@ -24,7 +24,7 @@ const MessageBox = ({
       return Colors.grey;
     }
   };
-  const [showMessage, setShowMessage] = React.useState(false);
+  const [showMessage, setShowMessage] = React.useState(true);
 
   return (
     <>

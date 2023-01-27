@@ -11,6 +11,8 @@ import {
   DELETE_CONTACT_SUCCESS,
   DELETE_CONTACT_LOADING,
   ADD_REMOVE_STAR_SUCCESS,
+  GET_CONTACT_LOADING,
+  GET_CONTACT_SUCCESS,
 } from "../../constants/actionTypes";
 import contactState from "../initialState/contactState";
 
@@ -39,10 +41,32 @@ const contacts = (state, { payload, type }) => {
     case CONTACTS_LOAD_ERROR: {
       return {
         ...state,
-        contacts: {
+        getContact: {
           ...state.contacts,
           loading: false,
           error: payload,
+        },
+      };
+    }
+    case GET_CONTACT_LOADING: {
+      return {
+        ...state,
+        getContact: {
+          ...state.getContact,
+          loading: true,
+          error: null,
+        },
+      };
+    }
+
+    case GET_CONTACT_SUCCESS: {
+      return {
+        ...state,
+        getContact: {
+          ...state.getContact,
+          loading: false,
+          data: payload,
+          error: null,
         },
       };
     }

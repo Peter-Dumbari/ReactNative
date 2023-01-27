@@ -22,7 +22,7 @@ const FormInput = ({
       if (icon_position === "right") {
         return "row-reverse";
       } else if (icon_position === "left") {
-        return "row-reverse";
+        return "row";
       }
     } else {
       return "row";
