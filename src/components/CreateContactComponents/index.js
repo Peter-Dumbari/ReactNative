@@ -7,7 +7,7 @@ import CustomButton from "../common/CustomButton";
 import CountryPicker from "react-native-country-picker-modal";
 import { DEFAULT_IMAGE_URL } from "../../constants/general";
 import Colors from "../../assets/theme/Colors";
-import ImagePicka from "../../components/common/ImagePicker/";
+import ImagePicker from "../common/ImagePicker";
 const CreateContactComponents = ({
   onChangeText,
   form,
@@ -87,7 +87,7 @@ const CreateContactComponents = ({
         </View>
         <CustomButton primary title="Create" onPress={onSubmit} />
       </Container>
-      <ImagePicka ref={sheetRef} />
+      <ImagePicker ref={sheetRef} />
     </View>
   );
 };
