@@ -12,7 +12,7 @@ import MessageBox from "../common/Message";
 import Colors from "../../assets/theme/Colors";
 import { AntDesign } from "@expo/vector-icons";
 import contactComponentStyles from "./contactComponentStyles";
-import { CREATE_CONTACT } from "../../constants/Routename";
+import { CONTACT_DETAIL, CREATE_CONTACT } from "../../constants/Routename";
 import { useNavigation } from "@react-navigation/native";
 
 const ContactComponent = ({ modalVisible, setModalVisible, data, loading }) => {
@@ -30,7 +30,11 @@ const ContactComponent = ({ modalVisible, setModalVisible, data, loading }) => {
     const { contact_picture, first_Name, last_Name, phoneNumber, countryCode } =
       item;
     return (
-      <TouchableOpacity style={contactComponentStyles.container}>
+      <TouchableOpacity
+        onPress={() => {
+          navigate(CONTACT_DETAIL, { item });
+        }}
+        style={contactComponentStyles.container}>
         <View style={contactComponentStyles.items}>
           {contact_picture ? (
             <Image
@@ -62,12 +66,6 @@ const ContactComponent = ({ modalVisible, setModalVisible, data, loading }) => {
   return (
     <>
       <View>
-        <AppModal
-          modalVisible={modalVisible}
-          setModalVisible={setModalVisible}
-          modalBody="Testing is allow always! and it is always allow anytime any moment testing testing testing testing testing microphone w anytime any moment testing testing testing testing testing microphone w anytime any moment testing testing testing testing testing microphone w anytime any moment testing testing testing testing testing microphone w anytime any moment testing testing testing testing testing microphone "
-        />
-
         {loading && (
           <View style={{ paddingHorizontal: 100, paddingVertical: 100 }}>
             <ActivityIndicator size="large" color={Colors.primary} />
@@ -82,7 +80,7 @@ const ContactComponent = ({ modalVisible, setModalVisible, data, loading }) => {
                 style={{ height: 0.5, backgroundColor: Colors.grey }}></View>
             )}
             keyExtractor={(item) => {
-              item.id;
+              item.countryCode;
             }}
             ListEmptyComponent={ListEmptyComponent}
             ListFooterComponent={<View style={{ paddingVertical: 100 }}></View>}

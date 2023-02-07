@@ -19,12 +19,16 @@ const CreateContactComponents = ({
   openRef,
   closeRef,
 }) => {
+  const [selectedImage, setSelectedImage] = React.useState(null);
+
   return (
     <View style={CreateContactsStyle.container}>
       <Container>
         <View style={CreateContactsStyle.imageContainer}>
           <Image
-            source={{ uri: DEFAULT_IMAGE_URL }}
+            source={{
+              uri: selectedImage !== null ? selectedImage : DEFAULT_IMAGE_URL,
+            }}
             style={CreateContactsStyle.image}
           />
           <TouchableOpacity onPress={openRef}>
@@ -87,7 +91,7 @@ const CreateContactComponents = ({
         </View>
         <CustomButton primary title="Create" onPress={onSubmit} />
       </Container>
-      <ImagePicker ref={sheetRef} />
+      <ImagePicker ref={sheetRef} setImage={setSelectedImage} />
     </View>
   );
 };

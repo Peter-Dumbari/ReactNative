@@ -8,22 +8,20 @@ export default StyleSheet.create({
   },
 
   image: {
-    width: 100,
-    height: 120,
+    width: "100%",
+    height: "100%",
     alignSelf: "center",
-    marginVertical: 40,
     marginHorizontal: 40,
+    borderRadius: 200,
   },
 
   imageContainer: {
-    backgroundColor: Colors.grey,
     width: 170,
     height: 170,
     alignSelf: "center",
-    borderRadius: 200,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 30,
+    marginBottom: 10,
   },
 
   uploadButton: {

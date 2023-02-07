@@ -5,21 +5,22 @@ import { Entypo } from "@expo/vector-icons";
 import ImagePickerStyle from "./ImagePickerStyle";
 import * as ImagePicking from "expo-image-picker";
 
-const ImagePicker = React.forwardRef(({}, ref) => {
-  const [image, setImage] = React.useState(null);
+const ImagePicker = React.forwardRef(({ setImage }, ref) => {
+  const [selectedImage, setSelectedImage] = React.useState(null);
+  React.useEffect(() => {
+    setImage && setImage(selectedImage);
+  }, [selectedImage]);
 
   const pickImage = async () => {
     let result = await ImagePicking.launchImageLibraryAsync({
-      mediaTypes: ImagePicking.MediaTypeOptions.All,
       allowsEditing: true,
-      aspect: [4, 3],
       quality: 1,
     });
 
-    console.log(result);
-
     if (!result.canceled) {
-      setImage(result.assets[0].uri);
+      setSelectedImage(result.assets[0].uri);
+    } else {
+      alert("You did not select any image.");
     }
   };
   const openCamera = async () => {
@@ -30,10 +31,13 @@ const ImagePicker = React.forwardRef(({}, ref) => {
     } else {
       const result = await ImagePicking.launchCameraAsync();
 
-      if (!result.cancelled) {
-        uploadImage(result.uri);
+      if (!result.canceled) {
+        let rslt = result.assets[0].uri;
+        setSelectedImage(rslt);
+        console.log("result", result);
+      } else {
+        alert("You did not select any image.");
       }
-
       return result;
     }
   };

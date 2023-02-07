@@ -22,7 +22,8 @@ export default () => (dispatch) => {
       first_Name: "Peterz",
       countryCode: "+234",
       phoneNumber: "3892839242",
-      contact_picture: "",
+      contact_picture:
+        "https://res.cloudinary.com/tamstech-computer-repair-center/image/upload/v1651502946/download_1_yfs0hz.jpg",
       last_Name: "Peter",
     },
     {

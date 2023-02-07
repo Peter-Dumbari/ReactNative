@@ -22,9 +22,6 @@ const HomeNavigator = () => {
       initialRouteName={CONTACT_LISTS}
       screenOptions={{
         headerShown: true,
-        headerStyle: StyleSheet.create({
-          backgroundColor: Colors.primary,
-        }),
       }}>
       <Home.Screen name={CONTACT_LISTS} component={Contacts}></Home.Screen>
       <Home.Screen
